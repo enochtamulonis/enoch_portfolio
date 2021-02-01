@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>EnochPortfolio</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbo-track': 'reload' %>
+
+    <%= tag.meta name: "direct-upload-url", content: rails_direct_uploads_path %>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+    <%= render 'layouts/alerts' %>
+    <%= render 'layouts/navbar' %>
+    <%= yield %>
+  </body>
+</html>

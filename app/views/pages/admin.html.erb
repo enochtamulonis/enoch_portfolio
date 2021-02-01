@@ -1,0 +1,26 @@
+<div class="min-h-screen w-full bg-gray-700 pt-16">
+  <%= form_with model: @project, html: { class: "mx-auto w-full md:w-2/3 flex flex-col mt-8" } do |form| %>
+    <h2 class="text-center text-gray-300 my-4 text-2xl">Post new project</h2>
+    <%= form.label :name, class: "text-gray-300 mb-2" %>
+    <%= form.text_field :name %>
+
+    <div class="field my-2" data-uppy="project[images][]">
+      <%= form.label :images, class: "text-gray-300" %>
+      <div class="flex w-full justify-between flex-wrap my-2">
+        <% if @project.images.attached? %>
+          <% @project.images.each do |image| %>
+            <%= image_tag(image, width: 200, class: "flex-shrink-0", data: { behavior: "uppy-preview"} ) %>
+          <% end %>
+        <% else %>
+          <div data-behavior="uppy-preview">
+          </div>
+        <% end %>
+      </div>
+
+      <%= link_to "Upload", "#", id: "uppy-trigger", class: "text-gray-300 px-4 py-1 border-2 border-gray-300" %>
+    </div>
+
+    <%= form.label :body, class: "text-gray-300 mb-2" %>
+    <%= form.rich_text_area :body, class: "bg-gray-300 focus:bg-gray-50" %>
+  <% end %>
+</div>
